@@ -14,20 +14,20 @@ Our website is structured around three key players:
 
 ```mermaid
 flowchart TB
-    A[End User] -->|HTTPS| B[Frontend (Static)]
-    B -->|API calls| C[Backend API Layer]
-    subgraph DevOps
-      D[Hosting/CDN]
-      E[CI/CD & Monitoring]
-      F[Security & Infrastructure]
-    end
-    B --> D
-    C --> D
-    C --> G[Database/Storage]
-    D --> E
-    D --> F
-    E --> D
-    F --> D
+A[End User] --> B[Frontend (Static)]
+B --> C[Backend API Layer]
+subgraph DevOps
+    D[Hosting/CDN]
+    E[CI/CD & Monitoring]
+    F[Security & Infrastructure]
+end
+B --> D
+C --> D
+C --> G[Database/Storage]
+D --> E
+D --> F
+E --> D
+F --> D
 ```
 
 This diagram illustrates how users interact with the frontend, which in turn communicates with the backend. DevOps provides the underlying services for both layers.
