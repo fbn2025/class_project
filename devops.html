@@ -1,49 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Project</title>
-</head>
-<body>
-    <h1>Team DevOps ‑ FirstBank Technology Academy</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-        </ul>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevOps Project – First Bank of Nigeria</title>
+    <style>
+      /* ── Design tokens ── */
+      :root {
+        --navy:        #00008B;
+        --gold:        #FFDF00;
+        --white:       #FFFFFF;
+        --navy-light:  #0000b3;
+        --navy-dark:   #000066;
+        --shadow:      0 4px 18px rgba(0,0,139,.18);
+        --radius:      6px;
+        --font:        Verdana, Geneva, sans-serif;
+      }
 
-    <!-- Group description -->
-    <h2>Group Description</h2>
-    <p>
-        The DevOps Project team handles the infrastructure and operational tooling that
-        powers the website. Responsibilities include provisioning environments,
-        implementing CI/CD pipelines for both frontend and backend, managing monitoring
-        and logging, and ensuring security and scalability of the platform.
-    </p>
+      /* ── Reset / Base ── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop" alt="DevOps Team - Infrastructure Engineers" style="width: 100%; max-width: 800px; height: auto; margin: 20px 0; border-radius: 8px;">
-    <ol>
-        <li>Sunday Ajibola - DevOps Engineer</li>
-        <li>Ghandi - DevOps Engineer</li>
-        <li>Isoken - DevOps Engineer</li>
-        <li>Chuks - DevOps Engineer</li>
-        <li>Hilda - DevOps Engineer</li>
-        <li>Chidinma - DevOps Engineer</li>
-        <li>Felix - DevOps Engineer</li>
-        <li>Adams - DevOps Engineer</li>
-        <li>Ijeomah - DevOps Engineer</li>
-        <li>Mustapha - DevOps Engineer</li>
-        <li>Gideon - DevOps Engineer</li>
-        <li>Joy - DevOps Engineer</li>
-        <li>Simeon - DevOps Engineer</li>
-        <li>Badmus - DevOps Engineer</li>
-        <li>Gafar - DevOps Engineer</li>
-    </ol>
-    <!-- Contact information -->
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:devops-team@example.com">devops-team@example.com</a></p>
-    <p>Phone: +1-555-0202</p>
-    
-</body>
+      body {
+        font-family: var(--font);
+        background: #f0f2f8;
+        color: #1a1a2e;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      header {
+        background: var(--navy);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 0 32px;
+        height: 68px;
+        box-shadow: 0 2px 10px rgba(0,0,139,.4);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo-wrap {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      .logo-img {
+        height: 48px;
+        width: auto;
+        background: var(--white);
+        border-radius: 6px;
+        padding: 4px 8px;
+        display: block;
+      }
+
+      .header-divider {
+        width: 1px;
+        height: 36px;
+        background: rgba(255,255,255,.25);
+        margin: 0 8px;
+      }
+
+      .header-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: .02em;
+      }
+
+      .gold-bar { height: 4px; background: var(--gold); }
+
+      /* ── Main ── */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 24px 64px;
+      }
+
+      /* ── Card ── */
+      .card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 40px 40px 36px;
+        max-width: 760px;
+        width: 100%;
+        border-top: 5px solid var(--navy);
+      }
+
+      /* ── Hero image ── */
+      .hero-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 28px;
+        display: block;
+        border: 3px solid var(--gold);
+      }
+
+      /* ── Page heading ── */
+      .card h1 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+        letter-spacing: .01em;
+      }
+
+      .section-divider {
+        height: 3px;
+        width: 56px;
+        background: var(--gold);
+        border-radius: 2px;
+        margin: 10px 0 28px;
+      }
+
+      /* ── Section heading ── */
+      .card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .card h3::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #dde1ef;
+      }
+
+      /* ── Team member grid ── */
+      .team-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .team-list li {
+        background: #f4f6fb;
+        border: 1px solid #dde1ef;
+        border-left: 4px solid var(--navy);
+        border-radius: var(--radius);
+        padding: 10px 14px;
+        font-size: 12px;
+        color: #1a1a2e;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background .15s, border-color .15s;
+      }
+
+      .team-list li:hover {
+        background: var(--gold);
+        border-left-color: var(--navy-dark);
+      }
+
+      .team-list li .num {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--white);
+        background: var(--navy);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .team-list li:hover .num {
+        background: var(--navy-dark);
+      }
+
+      .member-info { display: flex; flex-direction: column; gap: 2px; }
+
+      .member-name {
+        font-weight: 700;
+        font-size: 12px;
+        color: var(--navy);
+      }
+
+      .member-role {
+        font-size: 10px;
+        color: #666;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+      }
+
+      .team-list li:hover .member-name,
+      .team-list li:hover .member-role { color: var(--navy-dark); }
+
+      /* ── Back button ── */
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 32px;
+        padding: 13px 24px;
+        background: var(--navy);
+        color: var(--gold);
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-decoration: none;
+        border-radius: var(--radius);
+        box-shadow: 0 3px 10px rgba(0,0,139,.25);
+        transition: background .18s, transform .12s, box-shadow .18s;
+      }
+
+      .btn-back::before { content: '‹'; font-size: 18px; line-height: 1; }
+
+      .btn-back:hover {
+        background: var(--navy-light);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0,0,139,.3);
+      }
+
+      .btn-back:active {
+        transform: translateY(0);
+        background: var(--navy-dark);
+      }
+
+      /* ── Footer ── */
+      footer {
+        background: var(--navy);
+        color: rgba(255,255,255,.55);
+        text-align: center;
+        font-size: 11px;
+        padding: 16px 24px;
+        letter-spacing: .05em;
+      }
+
+      footer span { color: var(--gold); font-weight: 700; }
+
+      /* ── Responsive ── */
+      @media (max-width: 480px) {
+        header { padding: 0 16px; }
+        .card  { padding: 28px 18px 24px; }
+        .logo-img { height: 38px; }
+        .team-list { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ══ HEADER ══ -->
+    <header>
+      <a class="logo-wrap" href="index.html" aria-label="First Bank of Nigeria – Home">
+        <img
+          class="logo-img"
+          src="https://www.firstbanknigeria.com/wp-content/uploads/2020/01/First-Bank.svg"
+          alt="First Bank of Nigeria"
+        />
+      </a>
+      <div class="header-divider"></div>
+      <p class="header-title">Git Project Portal</p>
+    </header>
+
+    <div class="gold-bar"></div>
+
+    <!-- ══ MAIN ══ -->
+    <main>
+      <div class="card">
+
+
+        <h1>Team DevOps — FirstBank Technology Academy</h1>
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop" alt="DevOps Team - Infrastructure Engineers" style="width: 100%; max-width: 800px; height: auto; margin: 20px 0; border-radius: 8px;">
+
+        <div class="section-divider"></div>
+
+        <h3>Team Members</h3>
+
+        <ol class="team-list">
+          <li><span class="num">1</span>  <div class="member-info"><span class="member-name">Sunday Ajibola</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">2</span>  <div class="member-info"><span class="member-name">Ghandi</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">3</span>  <div class="member-info"><span class="member-name">Isoken</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">4</span>  <div class="member-info"><span class="member-name">Chuks</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">5</span>  <div class="member-info"><span class="member-name">Hilda</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">6</span>  <div class="member-info"><span class="member-name">Chidinma</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">7</span>  <div class="member-info"><span class="member-name">Felix</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">8</span>  <div class="member-info"><span class="member-name">Adams</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">9</span>  <div class="member-info"><span class="member-name">Ijeomah</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">10</span> <div class="member-info"><span class="member-name">Mustapha</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">11</span> <div class="member-info"><span class="member-name">Gideon</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">12</span> <div class="member-info"><span class="member-name">Joy</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">13</span> <div class="member-info"><span class="member-name">Simeon</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">14</span> <div class="member-info"><span class="member-name">Badmus</span><span class="member-role">DevOps Engineer</span></div></li>
+          <li><span class="num">15</span> <div class="member-info"><span class="member-name">Gafar</span><span class="member-role">DevOps Engineer</span></div></li>
+        </ol>
+
+        <a class="btn-back" href="index.html">Back to Home</a>
+
+      </div>
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      &copy; 2025 <span>First Bank of Nigeria</span> &nbsp;·&nbsp; DevOps Team &nbsp;·&nbsp; All rights reserved.
+    </footer>
+
+  </body>
 </html>
